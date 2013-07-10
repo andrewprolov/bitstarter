@@ -22,10 +22,12 @@ References:
 */
 
 var fs = require('fs');
+var res = require('restler');
 var program = require('commander');
 var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
+var URL_DEFAULT = "http://desolate-atoll-9694.herokuapp.com";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
@@ -65,10 +67,25 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .parse(process.argv);
-    var checkJson = checkHtmlFile(program.file, program.checks);
-    var outJson = JSON.stringify(checkJson, null, 4);
-    console.log(outJson);
+        .option('-u, --url <url_name>', 'URL address', clone(assertFileExists), URL_DEFAULT)  
+    .parse(process.argv);
+
+    var outJson = ""; 
+    if (program.file) {
+          var checkJson = checkHtmlFile(program.file, program.checks);
+          outJson = JSON.stringify(checkJson, null, 4);
+     }
+     else if (program.url) {
+         rest.get(program.url).on('complete', function(result) {
+                     if (result instanceof Error) {
+                       sys.puts('Error: ' + result.message);
+                        his.retry(5000); // try again after 5 sec
+                      } else {     
+                    console.log(result);
+                    } 
+           });
+     }
+     console.log(outJson);
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
