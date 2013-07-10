@@ -39,7 +39,13 @@ var assertFileExists = function(infile) {
 };
 
 var cheerioHtmlFile = function(htmlfile) {
-    return cheerio.load(fs.readFileSync(htmlfile));
+    if (fs.existsSync(htmlfile)) {
+	return cheerio.load(fs.readFileSync(htmlfile));
+    } else {
+//console.log("not a file - cheerio: " + htmlfile);
+        return cheerio.load(htmlfile);
+    }
+    
 };
 
 var loadChecks = function(checksfile) {
@@ -54,6 +60,7 @@ var checkHtmlFile = function(htmlfile, checksfile) {
         var present = $(checks[ii]).length > 0;
         out[checks[ii]] = present;
     }
+//console.log(out);
     return out;
 };
 
@@ -65,27 +72,37 @@ var clone = function(fn) {
 
 if(require.main == module) {
     program
-        .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
-        .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .option('-u, --url <url_name>', 'URL address', clone(assertFileExists), URL_DEFAULT)  
+        .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists))
+        .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists))
+        .option('-u, --url <url_name>', 'URL address')  
     .parse(process.argv);
 
-    var outJson = ""; 
+    var outJson = "";
+
     if (program.file) {
+//          console.log("program.file: " + program.file);
           var checkJson = checkHtmlFile(program.file, program.checks);
           outJson = JSON.stringify(checkJson, null, 4);
+          console.log(outJson);
      }
      else if (program.url) {
-         rest.get(program.url).on('complete', function(result) {
+         res.get(program.url).on('complete', function(result) {
                      if (result instanceof Error) {
                        sys.puts('Error: ' + result.message);
-                        his.retry(5000); // try again after 5 sec
-                      } else {     
-                    console.log(result);
-                    } 
-           });
+                      } else {
+//                        return result;
+//                      }
+//	  });
+//console.log(htmlresult);
+			  var checkJson = checkHtmlFile(result, program.checks);
+			  outJson =  JSON.stringify(checkJson, null, 4);
+			  console.log(outJson);
+		      }
+	     });
+//                      console.log(outJson);
      }
-     console.log(outJson);
+//console.log("post if check...");
+//     console.log(outJson);
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
