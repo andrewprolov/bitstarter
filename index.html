@@ -5,12 +5,12 @@
     <title>My First Bitstarter</title>
     <meta name="viewport" content="width=device-width, intitial-scale=1.0">
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
-    <link rel="styleshet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">
-
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
-
     <style type="text/css">
 
       /* Large desktop */
@@ -47,7 +47,7 @@
        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
       }
       .heading, .subheading {
-       font-family: 'Ubuntu', Helvetica, Arial, sans-serif'
+       font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
        text-align: center;
       }
       p.lead {
@@ -81,8 +81,8 @@
 
       /* Marketing Copy & Footer */
       .copy {
-      padding-top: 2.5;
-      padding-bottom; 2.5;
+      padding-top: 2.5%;
+      padding-bottom: 2.5%;
       text-align: justify;
       }
       .asset {
@@ -106,8 +106,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
 	<div class="container">
-	  <button type="button" class="btn btn-navbar"
-		data-toggle="collapse" data-target=".nav-collapse">
+	  <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 	    <span class="icon-bar"></span>
 	    <span class="icon-bar"></span>
 	    <span class="icon-bar"></span>
@@ -126,12 +125,13 @@
 
     <!-- row-fluid for resize layout -->
     <div class="container">
+
       <div class="row-fluid heading">
 	<div class="span12">
 	  <h1>Product</h1>
 	</div>
       </div>
-      <div class="row-fluid sub-heading">
+      <div class="row-fluid subheading">
 	<div class="span12">
 	  <p class="lead">One sentence description</p>
 	</div>
@@ -152,13 +152,13 @@
 		</div>
 	      </div>
 	      <div class="span4">
-		<div class="linediv-C">
-		  <h3>$6000</h3><p> of $10,000</p>
+		<div class="linediv-c">
+		  <h3>$6000</h3><p>of $10,000</p>
 		</div>
 	      </div>
 	      <div class="span4">
 		<div class="linediv-r">
-		<h3>10</h3><p> days left</p>
+		  <h3>10</h3><p>days left</p>
 		</div>
 	      </div>
 	    </div>
@@ -180,67 +180,74 @@
 	  </div>
 	</div> <!-- span8 end -->
       </div> <!-- end container row-fluid -->
-
-      <!-- marketing section -->
       
-    <div class="container">
-      <div class="row navigation">
-        <div class="span2 logo">
-          Logo
-        </div>
-        <div class="span6 blank">
-          Blank
-        </div>
-        <div class="span4 about">
-          About
-        </div>
+      <div class="row-fluid section1">
+	<div class="span5 offset1 asset">
+	  <img class="img-polaroid" src="http://placehold.it/480x300">
+	</div>
+	<div class="span5 copy">
+	  <p>
+	    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat sagittis magna vel pulvinar. Aliquam sit amet libero enim. Integer eget ante viverra enim cursus hendrerit in vel leo. Proin fringilla dictum imperdiet. Maecenas nec elit tempor metus viverra imperdiet. Morbi et rhoncus nulla. Aenean eu nulla sit amet nunc tempus congue eget eleifend mauris. Maecenas ut volutpat elit. 
+	  </p>
+	</div>
       </div>
-      <div class="row heading">
-        <div class="span12">
-          <h1>Bitstarter Title</h1>
-        </div>
+      
+      <div class="row-fluid section2">
+	<div class="span5 offset1 copy copy-right">
+	  <p>
+	    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat sagittis magna vel pulvinar. Aliquam sit amet libero enim. Integer eget ante viverra enim cursus hendrerit in vel leo. Proin fringilla dictum imperdiet. Maecenas nec elit tempor metus viverra imperdiet. Morbi et rhoncus nulla. Aenean eu nulla sit amet nunc tempus congue eget eleifend mauris. Maecenas ut volutpat elit.
+	  </p>
+	</div>
+	<div class="span5 asset">
+	  <img class="img-polaroid" src="http://placehold.it/480x300">
+	</div>
+      </div>
+      <!-- marketing section end -->
+
+      <!-- FAQ -->
+      <div class="row-fluid faq">
+	<div class="span10 offset1">
+	  <h3>FAQ</h3>
+	  <div class="accordion" id="accordion2">
+	    <div class="accordion-group">
+	      <div class="accordion-heading">
+		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+		  What does FAQ stand for?
+		</a>
+	      </div>
+	      <div id="collapseOne" class="accordion-body collapse">
+		<div class="accordion-inner">
+		  Frequently Asked Question
+		</div>
+	      </div>
+	    </div>
+	    <div class="accordion-group">
+	      <div class="accordion-heading">
+		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+		  What's a Frequently Asked Question?
+		</a>
+	      </div>
+	      <div id="collapseTwo" class="accordion-body collapse">
+		<div class="accordion-inner">
+		  A question that is commonly asked by others
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      <!-- FAQ end --> 
+
+      <!-- footer -->
+      <div class="row-fluid footer">
+	<div class="span12">
+	  <p> this work is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC By-SA 3.0 </a>
+	    , without all the cruft that would normally be put at the bottom of a page.
+	  </p>
+	</div>
       </div> 
-     <div class="row subheading">
-        <div class="span12">
-          <p class="lead">This is my first bitstarter project.</p>
-        </div>
-      </div>
-      <div class="row pitch">
-        <div class="span6 video">
-          Video
-        </div>
-        <div class="span6">
-          <div class="thermometer">
-            Thermometer
-          </div>
-          <div class="order">
-            Order
-          </div>
-          <div class="social">
-            Social
-          </div>
-        </div>
-      </div>
-      <div class="row section1">
-        <div class="span12">
-          Marketing Section 1
-        </div>
-      </div>
-      <div class="row section2">
-        <div class="span12">
-          Marketing Section 2
-        </div>
-      </div>
-      <div class="row faq">
-        <div class="span12">
-          FAQ
-        </div>
-      </div>
-      <div class="row footer">
-        <div class="span12">
-          Footer
-        </div>
-      </div>
-    </div>
+      <!-- footer end -->
+
+    </div> <!-- container -->      
   </body>
 </html>
